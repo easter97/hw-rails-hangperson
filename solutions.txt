@@ -2,19 +2,26 @@ Where Things Are
 ___________________________________
 
 0. Where in the Rails app directory structure is the code corresponding to the HangpersonGame model?
+	app/models/hangperson_game.rb
 	
 1. Where is the code that most closely corresponds to the controller logic in the Sinatra apps' app.rb file?
-
+	app/controllers/game_controller.rb
+	
 2. Where is the code corresponding to the Sinatra app's views (new.erb, show.erb, etc.)? Why do you think the filename suffixes for these views are different in Rails than they are in Sinatra?
-
+	app/views/game/
+	The prefixes include .html.erb to indicate the use of HTML to Rails.
+	
 3. How do routes (e.g. GET /new) get mapped to route handlers (controller actions) in Sinatra vs. in Rails? (Hint: look at config/routes.rb.) Why do you think Rails adds this extra level of indirection on routes?
+	This makes the route unique to the particular instance of the hangperson game without requiring that information as an additional argument.
 
 4. What is the role of the :as => 'name' option in the route declarations of config/routes.rb? (Hint: look at the views.)
+	These correspond to the name of the views in the game folder.
 
 Session
 ___________________________________
 
 0. Syntactically, what are the differences between how this session management is done in Rails vs. Sinatra?
+	
 
 1. In the Sinatra version, we stored the @game object directly into session[]. In the Rails version, we serialize the object into YAML before storing it in the session[]. Why do we do this? (Hint: use the keywords in this question to do a Web search.)
 
