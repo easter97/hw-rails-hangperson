@@ -27,19 +27,25 @@ ___________________________________
 	We use YAML to encode the session variable for structure and storage of session variables in the database.
 
 2. A popular serialization format for exchanging data between Web apps is JSON. Why wouldn't it work to use JSON instead of YAML? (Hint: try replacing YAML.load() with JSON.parse() and .to_yaml with .to_json to do this test. You will have to clear out your cookies associated with localhost:3000 in order to nuke the session[]. Based on the error messages you get when trying to use JSON serialization, you should be able to explain why YAML serialization works in this case but JSON doesn't.)
+	YAML supports the ability to self reference, support for complex datatypes, embedded block literals, comments, and more features that are not supported by JSON encoding. This functionality is necessary to encode the session variable with all the necessary information.
 
 Views
 ___________________________________
 
 0. In the Sinatra version, each controller action ends with either redirect (which as you can see becomes redirect_to in Rails) to redirect the player to another action, or erb to render a view. Why are there no explicit calls corresponding to erb in the Rails version? Based on the code in the app, can you discern the Convention-over-Configuration rule that is at work here?
+	There are no explicit calls to erb in the Rails version to provide a layer of separation between the functions and user actions and the actions the program takes. This is indicative of Convention-over-Configuration in that it is provide a set path for the program to follow to relieve the amount a developer has to direct the program without losing flexibility.
 
 1. How are forms handled differently between Sinatra and Rails views? (Hint: it would be perfectly legal to use raw HTML <form> tags in Rails; why do you think that's not the preferred way to do it?)
+	Rails provides the built-in architecture to construct form elements in a way that is ideal for the RESTful architecture and posting information to the database. It also allows us more options than the usual raw HTML form.
 
 2. How are form elements such as text fields and buttons handled in Rails? (Again, raw HTML would be legal, but what's the motivation behind the way Rails does it?)
+	As mentioned before, the Rails version of forms provides us with additional options that the raw HTML forms do not have. This allows us to provide more information when posting to the database, similar to using single assignment via hash.
 
 3. In the Sinatra version, the show, win and lose views re-use the code in the new view that offers a button for starting a new game. How is this done in the Rails version?
-
+	They render a template from the /new file that they created with the button to start a new game.
+	
 Cucumber scenarios
 ___________________________________
 
 0. What is a qualitative explanation for why the Cucumber scenarios and step definitions didn't need to be modified at all to work equally well with the Sinatra or Rails versions of the app?
+	The same actions are taken in both versions of the application, regardless of how they are accomplished. Since cucumber is simply testing to make sure the desired result is acheived from that action, it is not important to the program how this is accomplished and is not specific to one implementation over the other.
