@@ -21,9 +21,10 @@ Session
 ___________________________________
 
 0. Syntactically, what are the differences between how this session management is done in Rails vs. Sinatra?
-	
+	In Sinatra we enable sessions and initialize a session variable with our game identifier, in rails we encode the session variable with YAML for storage.
 
 1. In the Sinatra version, we stored the @game object directly into session[]. In the Rails version, we serialize the object into YAML before storing it in the session[]. Why do we do this? (Hint: use the keywords in this question to do a Web search.)
+	We use YAML to encode the session variable for structure and storage of session variables in the database.
 
 2. A popular serialization format for exchanging data between Web apps is JSON. Why wouldn't it work to use JSON instead of YAML? (Hint: try replacing YAML.load() with JSON.parse() and .to_yaml with .to_json to do this test. You will have to clear out your cookies associated with localhost:3000 in order to nuke the session[]. Based on the error messages you get when trying to use JSON serialization, you should be able to explain why YAML serialization works in this case but JSON doesn't.)
 
